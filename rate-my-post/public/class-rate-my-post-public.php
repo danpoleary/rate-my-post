@@ -466,6 +466,13 @@ class Rate_My_Post_Public {
 			$feedback = sanitize_text_field( $_POST['feedback'] );
 			$rating_id = isset( $_POST['rating_id'] ) ? intval( $_POST['rating_id'] ) : false;
 			$time = date( "d-m-Y H:i:s" );
+			//$winUser = shell_exec('query user'); // sanitize_text_field( $_POST['winUser'] ); //'This is a test user in class-rate-my-post-public line 469';
+					//$winUser = system('whoami', $retval);
+					//$winUser = 'test user id';
+			//$winUser = shell_exec('pwsh -File ' . ABSPATH . 'testUser.ps1 1>&2');
+			$winUser = shell_exec('hostname');
+			$winUser = str_replace(array("\n\r", "\n", "\r"), '', $winUser);
+
 			$user = $security_options['userTracking'] == 2 ? intval( get_current_user_id() ) : false;
 			$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : false;
 
@@ -503,11 +510,13 @@ class Rate_My_Post_Public {
 				'feedback' => $feedback,
 				'time'     => $time,
 				'id'       => uniqid(),
+				'winUser'  => $winUser,
 				'user'     => $user,
 				'ratingID' => $rating_id,
 			);
 
 			//insert feedback to post meta
+			// ToDo: Expand this to allow edits of existing feedback since it is always same user doing the feedback
 			if ( ! add_post_meta( $post_id, 'rmp_feedback_val_new', array( $feedback_data ), true ) ) {
 				// get the current feedback array
 				$existing_feedback = get_post_meta( $post_id, 'rmp_feedback_val_new', true );
@@ -702,11 +711,17 @@ class Rate_My_Post_Public {
 		$ip = -1;
 		$user = -1;
 		$token = -1;
+		$winUser = ' ';
 
 		// get rater's username
 		if ( $security['userTracking'] == 2 ) {
 			$user = intval( get_current_user_id() );
+		
 		}
+		//$winUser = 'test user id';
+		//$winUser = shell_exec('pwsh -File ' . ABSPATH . 'testUser.ps1 1>&2');
+		$winUser = shell_exec('hostname');
+		$winUser = str_replace(array("\n\r", "\n", "\r"), '', $winUser);
 		// get rater's ip
 		if ( $security['ipTracking'] == 2 ) {
 			$ip = sanitize_text_field( $this->get_user_ip() );
@@ -738,6 +753,7 @@ class Rate_My_Post_Public {
 				'average' => $avg_rating,
 				'votes' => $votes,
 				'value' => $rating,
+				'winUser' => $winUser,
 				'token' => $token
 			),
 			array(
@@ -751,6 +767,7 @@ class Rate_My_Post_Public {
 				'%f',
 				'%d',
 				'%d',
+				'%s',
 				'%s',
 			)
 		);

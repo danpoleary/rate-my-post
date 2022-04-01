@@ -842,6 +842,7 @@ class Rate_My_Post_Admin {
 			$analytics_row['action'] = intval( $row->action );
 			$analytics_row['newRating'] = floatval( $row->average );
 			$analytics_row['newVotes'] = intval( $row->votes );
+			$analytics_row['winUser'] = $row->winUser;
 			$analytics_row['value'] = intval( $row->value );
 
 			// not yet functional
@@ -1078,6 +1079,7 @@ class Rate_My_Post_Admin {
 						'feedback' => $value,
 						'time'     => false,
 						'id'       => false,
+						'winUser'  => false,
 						'user'     => false,
 						'ratingID' => false,
 					);

@@ -91,7 +91,10 @@
               </span>
             </span>
           </th>
-          <th>
+           <th>
+            <?php echo ( esc_html__( 'Windows User', 'rate-my-post' ) ); ?>
+          </th>
+         <th>
             <span class="rmp-tooltip">
               <span class="rmp-tooltip__title">
                 <?php echo ( esc_html__( 'User', 'rate-my-post' ) ); ?>
@@ -116,6 +119,9 @@
             </td>
             <td>
               <?php echo ( ! isset( $feedback_single['ratingID'] ) || ! $feedback_single['ratingID'] ) ? 'n/a':  $feedback_single['ratingID']; ?>
+            </td>
+            <td>
+              <?php echo ( ! $feedback_single['winUser'] ) ? 'n/a': $feedback_single['winUser']; ?>
             </td>
             <td>
               <?php echo ( ! $this->feedback_user( $feedback_single['user'] ) ) ? 'n/a': $this->feedback_user( $feedback_single['user'] ); ?>

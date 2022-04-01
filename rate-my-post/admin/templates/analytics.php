@@ -49,6 +49,9 @@
           </div>
         </th>
         <th>
+          <?php echo ( esc_html__( 'Windows User', 'rate-my-post' ) ); ?>
+        </th>
+        <th>
           <span class="rmp-tooltip">
             <span class="rmp-tooltip__title">
               <?php echo ( esc_html__( 'User', 'rate-my-post' ) ); ?>
@@ -86,6 +89,7 @@
           <td><?php echo $row['id']; ?></td>
           <td><?php echo $row['time']; ?></td>
           <td><?php echo $row['ip']; ?></td>
+		  <td><?php echo $row['winUser']; ?></td>
           <td><?php echo $row['user']; ?></td>
           <td>
             <?php if( get_post_type( $row['postID'] ) != 'crw' ): ?>

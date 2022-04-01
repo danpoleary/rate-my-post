@@ -93,7 +93,7 @@ class Rate_My_Post_Upgrader {
 
 				$sql = "CREATE TABLE $table_name (
 					id mediumint(9) NOT NULL AUTO_INCREMENT,
-					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					time datetime DEFAULT CURRENT_TIMESTAMP,
 					ip tinytext NOT NULL,
 					country tinytext NOT NULL,
 					user smallint(5) NOT NULL,
@@ -103,6 +103,7 @@ class Rate_My_Post_Upgrader {
 					average decimal(2, 1) NOT NULL,
 					votes smallint(5) NOT NULL,
 					value smallint(5) NOT NULL,
+					winUser tinytext DEFAULT NULL,
 					UNIQUE KEY id (id)
 				) $charset_collate;";
 
@@ -120,7 +121,7 @@ class Rate_My_Post_Upgrader {
 
 				$sql = "CREATE TABLE $table_name (
 					id mediumint(9) NOT NULL AUTO_INCREMENT,
-					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					time datetime DEFAULT CURRENT_TIMESTAMP,
 					ip tinytext NOT NULL,
 					country tinytext NOT NULL,
 					user smallint(5) NOT NULL,
@@ -130,6 +131,7 @@ class Rate_My_Post_Upgrader {
 					average decimal(2, 1) NOT NULL,
 					votes smallint(5) NOT NULL,
 					value smallint(5) NOT NULL,
+					winUser tinytext DEFAULT NULL,
 					token tinytext NOT NULL,
 					UNIQUE KEY id (id)
 				) $charset_collate;";
@@ -147,7 +149,7 @@ class Rate_My_Post_Upgrader {
 
 				$sql = "CREATE TABLE $table_name (
 					id mediumint(9) NOT NULL AUTO_INCREMENT,
-					time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+					time datetime DEFAULT CURRENT_TIMESTAMP,
 					ip tinytext NOT NULL,
 					country tinytext NOT NULL,
 					user smallint(5) NOT NULL,
@@ -157,6 +159,7 @@ class Rate_My_Post_Upgrader {
 					average decimal(2, 1) NOT NULL,
 					votes smallint(5) NOT NULL,
 					value smallint(5) NOT NULL,
+					winUser tinytext DEFAULT NULL,
 					token tinytext NOT NULL,
 					UNIQUE KEY id (id)
 				) $charset_collate;";

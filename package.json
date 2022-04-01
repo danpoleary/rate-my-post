@@ -28,7 +28,7 @@
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",
     "postcss-simple-vars": "^5.0.2",
-    "webpack": "^4.43.0"
+    "webpack": "^4.46.0"
   },
   "dependencies": {
     "datatables": "^1.10.18",
